@@ -1,0 +1,32 @@
+
+
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+<md-tab-group color="primary">
+
+    <md-tab label="Details">
+      <app-details [address]="myForm.controls.address" [extractTemplateObj]="extractedTemplate"></app-details>
+    </md-tab>
+    <md-tab label="Groups">
+      <app-groups></app-groups>
+    </md-tab>
+     <md-tab label="Devices">
+      <h1>Tywin Lannister</h1>
+    </md-tab>
+     <md-tab label="Subscribers">
+      <h1>Thoros of Myr</h1>
+    </md-tab>
+     <md-tab label="Phone">
+      <h1>The Red Woman</h1>
+    </md-tab>
+     <md-tab label="Billing">
+      <h1>The Red Woman</h1>
+    </md-tab>
+     <md-tab label="History">
+      <h1>The Red Woman</h1>
+    </md-tab>
+
+</md-tab-group>
+
+  <button type="submit">Submit</button>
+
+</form>

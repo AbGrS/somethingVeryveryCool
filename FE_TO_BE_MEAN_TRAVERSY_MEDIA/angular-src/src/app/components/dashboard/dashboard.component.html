@@ -1,0 +1,51 @@
+
+<div *ngIf="!ShowAccountCreationForm">
+  <form (submit)="onSearchSubmit()">
+      <input type="text" name="search" class="form-control" style="width: 70%;display: inline-block;" placeholder="search an account to edit" />
+
+      <input style="margin-left: 20px" type="submit" class="btn btn-large btn-primary" name="submit" value="submit"/>
+  </form>
+
+<form> 
+	<!-- (submit)="onAccountCreationSubmit()" -->
+ <select class="form-control" style="width: 40%;margin-top: 30px;display: inline-block;" [(ngModel)]="selectedTemplate" name="templateSelect" (ngModelChange)="onChange($event)">
+    <option *ngFor="let item of templates">{{item.templateName}}</option>
+  </select>
+
+   <input style="margin-left: 20px" type="submit" class="btn btn-large btn-primary" name="submit" value="Create" data-toggle="modal" data-target="#myModal" />
+
+ </form>
+
+ 
+<!-- <span defaultOverlayTarget></span> -->
+</div>
+
+<div *ngIf="ShowAccountCreationForm">
+   <app-create-account-tv [data]="allTemplates" [selectedVal]="theVal"></app-create-account-tv>
+</div>
+
+<div>
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Account ExternalId</h4>
+        </div>
+        <form (submit)="onAccountCreationSubmit()">
+          <div class="modal-body">
+            <label>Account External Id: </label><input class="form-control" type="text" [(ngModel)]="externalId" name="username" />
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="button" id="closeModal" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+         <flash-messages></flash-messages>
+      </div>
+      
+    </div>
+  </div>
+</div>
